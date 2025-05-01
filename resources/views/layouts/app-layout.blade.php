@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Money Notes - @yield('title')</title>
+</head>
+
+<body class="min-h-screen bg-linear-180 from-gray-50 to-amber-50 font-inter">
+    <x-navbar />
+    <div class="mb-16 md:mb-0">
+        @yield('konten')
+    </div>
+    <x-footer />
+    <x-floating-menu />
+    <x-bottom-navbar />
+    @hasSection('sweetAlert')
+        <x-sweet-alert />
+    @endif
+</body>
+
+</html>
