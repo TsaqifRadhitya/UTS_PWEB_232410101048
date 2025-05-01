@@ -1,4 +1,4 @@
-@extends('components.app-layout')
+@extends('layouts.app-layout')
 @section('title', 'Kelola Keuangan')
 
 @section('konten')
