@@ -81,7 +81,7 @@ class pageController extends Controller
             ]
         );
         Session::put('user', ['username' => $request->username, 'lastLogin' => now()]);
-        return redirect(route('dashboard', ['username' => $request->username]));
+        return redirect(route('dashboard', ['username' => $request->username]))->with('success','Berhasil Login !');
     }
 
     public function LogOut()

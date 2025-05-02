@@ -1,6 +1,8 @@
 @extends('layouts.app-layout')
 @section('title', 'Kelola Keuangan')
-
+@session('success')
+    @section('sweetAlert',Session::get('success'))
+@endsession
 @section('konten')
     <section class="p-5 lg:p-10 w-full min-h-[90vh]">
         <div class="flex flex-col w-full h-full rounded-xl overflow-hidden shadow-lg bg-white">

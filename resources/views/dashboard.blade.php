@@ -1,6 +1,8 @@
 @extends('layouts.app-layout')
 @section('title', 'Dashboard')
-
+@session('success')
+    @section('sweetAlert', Session::get('success'))
+@endsession
 @section('konten')
     <section class="p-5 lg:p-10 w-full lg:h-[90vh] bg-gradient-to-br from-cyan-50 to-amber-50">
         <div class="flex flex-col w-full h-full overflow-hidden shadow-xl rounded-xl bg-white">

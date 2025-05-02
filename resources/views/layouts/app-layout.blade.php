@@ -12,15 +12,15 @@
 
 <body class="min-h-screen bg-linear-180 from-gray-50 to-amber-50 font-inter">
     <x-navbar />
-    <div class="mb-16 md:mb-0">
+    <div class="mb-16 md:mb-0 relative">
         @yield('konten')
+        @hasSection('sweetAlert')
+            <x-sweet-alert />
+        @endif
     </div>
     <x-footer />
     <x-floating-menu />
     <x-bottom-navbar />
-    @hasSection('sweetAlert')
-        <x-sweet-alert />
-    @endif
 </body>
 
 </html>
