@@ -1,6 +1,6 @@
 <ul class="fixed bottom-5 right-5 hidden md:flex lg:hidden flex-col items-end gap-3 z-50">
     <li id="dashboard" class="opacity-0 translate-y-5 transition-all duration-300">
-        <a href="{{ route('dashboard', ['username' => Session::get('user')['username']]) }}"
+        <a href="{{ route('dashboard', ['username' => View::getSection('username')]) }}"
             class="flex items-center px-4 py-2 bg-white text-amber-600 rounded-full shadow-md hover:shadow-lg transition-all">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -10,7 +10,7 @@
         </a>
     </li>
     <li id="keuangan" class="opacity-0 translate-y-5 transition-all duration-300">
-        <a href="{{ route('kelola.index') }}"
+        <a href="{{ route('kelola.index', ['username' => View::getSection('username')]) }}"
             class="flex items-center px-4 py-2 bg-white text-amber-600 rounded-full shadow-md hover:shadow-lg transition-all">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -20,7 +20,7 @@
         </a>
     </li>
     <li id="profile" class="opacity-0 translate-y-5 transition-all duration-300">
-        <a href="{{ route('profile') }}"
+        <a href="{{ route('profile', ['username' => View::getSection('username')]) }}"
             class="flex items-center px-4 py-2 bg-white text-amber-600 rounded-full shadow-md hover:shadow-lg transition-all">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

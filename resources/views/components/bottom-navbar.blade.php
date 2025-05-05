@@ -1,8 +1,7 @@
-<nav
-    class="fixed bottom-0 w-full flex justify-center md:hidden items-center p-4 bg-white shadow-lg py-2 z-50">
+<nav class="fixed bottom-0 w-full flex justify-center md:hidden items-center p-4 bg-white shadow-lg py-2 z-50">
     <ul class="flex justify-between w-full max-w-xs">
         <li>
-            <a href="{{ route('dashboard', ['username' => Session::get('user')['username']]) }}"
+            <a href="{{ route('dashboard', ['username' => View::getSection('username')]) }}"
                 class="flex flex-col items-center p-2 text-gray-600 hover:text-amber-600 transition-all">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -12,7 +11,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('kelola.index') }}"
+            <a href="{{ route('kelola.index', ['username' => View::getSection('username')]) }}"
                 class="flex flex-col items-center p-2 text-gray-600 hover:text-amber-600 transition-all">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -22,7 +21,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('profile') }}"
+            <a href="{{ route('profile', ['username' => View::getSection('username')]) }}"
                 class="flex flex-col items-center p-2 text-gray-600 hover:text-amber-600 transition-all">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

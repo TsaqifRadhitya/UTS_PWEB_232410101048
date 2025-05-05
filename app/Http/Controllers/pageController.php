@@ -60,9 +60,9 @@ class pageController extends Controller
         ],
     ];
 
-    public function loginPage()
+    public function loginPage(Request $request)
     {
-        if (Session::has('user')) {
+        if ($request->username) {
             return redirect(route('dashboard'));
         }
         return view('login');
@@ -80,25 +80,25 @@ class pageController extends Controller
                 'password.required' => 'harap mengisi password'
             ]
         );
-        Session::put('user', ['username' => $request->username, 'lastLogin' => now()]);
-        return redirect(route('dashboard', ['username' => $request->username]))->with('success','Berhasil Login !');
+        Session::put(['last Login' => now()]);
+        return redirect()->route('dashboard', ['username' => $request->username])->with('success', 'Berhasil Login !');
     }
 
     public function LogOut()
     {
-        Session::remove('user');
+        Session::remove('last Login');
         return redirect(route('login.index'));
     }
 
-    public function profilePage()
+    public function profilePage(Request $request)
     {
-        if (!Session::has('user')) {
+        if (!$request->username) {
             return redirect(route('login.index'));
         }
-        return view('profile', ['username' => Session::get('user')['username'], 'lastLogin' => Session::get('user')['lastLogin'], 'page' => 'profile']);
+        return view('profile', ['username' => $request->username, 'lastLogin' => Session::get('lastLogin'), 'page' => 'profile']);
     }
 
-    public function dashboardPage()
+    public function dashboardPage(Request $request)
     {
         $uangMasuk = 0;
         $uasngKeluar = 0;
@@ -116,23 +116,23 @@ class pageController extends Controller
             'uangKeluar' => $uasngKeluar,
             'selisih' => $uangMasuk - $uasngKeluar
         ];
-        if (!Session::has('user')) {
-            return redirect(route('login.index'));
+        if (!$request->username) {
+            return redirect()->route('login.index');
         }
 
-        return view('dashboard', ['data' => $data, 'username' => Session::get('user')['username'], 'page' => 'dashboard']);
+        return view('dashboard', ['username' => $request->username, 'data' => $data, 'username' => $request->username, 'page' => 'dashboard']);
     }
 
-    public function kelolaPage()
+    public function kelolaPage(Request $request)
     {
-        if (!Session::has('user')) {
+        if (!$request->username) {
             return redirect(route('login.index'));
         }
         $data = [
             'Activitys' => $this->activitys,
             'Saldo' => $this->saldo
         ];
-        return view('pengelolaan', ['data' => $data, 'page' => 'kelola']);
+        return view('pengelolaan', ['username' => $request->username, 'data' => $data, 'page' => 'kelola']);
     }
 
     public function kelolaStore(Request $request)
@@ -145,9 +145,9 @@ class pageController extends Controller
             'type.required' => 'Harap mengisi jenis aktivitas'
         ]);
 
-        if($request->type === 'pengeluaran' && $request->nominal > $this->saldo){
+        if ($request->type === 'pengeluaran' && $request->nominal > $this->saldo) {
             throw ValidationException::withMessages(['nominal' => 'Nominal penarikan melebihi saldo']);
         }
-        return back()->with('success', 'Berhasil menambahkan data');
+        return redirect()->route('kelola.index', ['username' => $request->username])->with('success', 'Berhasil menambahkan data');
     }
 }

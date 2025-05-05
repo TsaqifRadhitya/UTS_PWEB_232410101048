@@ -1,5 +1,5 @@
 @extends('layouts.app-layout')
-
+@section('username',$username)
 @section('konten')
     <section class="w-full h-[90vh] flex items-center justify-center p-5 lg:p-10 bg-gradient-to-br from-cyan-50 to-amber-50">
         <div class="w-full h-full bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">

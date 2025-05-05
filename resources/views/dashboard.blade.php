@@ -1,5 +1,6 @@
 @extends('layouts.app-layout')
 @section('title', 'Dashboard')
+@section('username',$username)
 @session('success')
     @section('sweetAlert', Session::get('success'))
 @endsession
