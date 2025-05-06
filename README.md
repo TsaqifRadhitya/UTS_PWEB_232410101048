@@ -1,6 +1,6 @@
 # 💰 MoneyNotes
 
-**MoneyNotes** adalah aplikasi web untuk mencatat pemasukan dan pengeluaran harian dengan tujuan membantu pengguna mengelola keuangan pribadi secara lebih mudah dan terorganisir.
+**MoneyNotes** adalah aplikasi web untuk mencatat pemasukan dan pengeluaran dengan tujuan membantu pengguna mengelola keuangan pribadi secara lebih mudah dan terorganisir.
 
 ## ✨ Fitur Utama
 
