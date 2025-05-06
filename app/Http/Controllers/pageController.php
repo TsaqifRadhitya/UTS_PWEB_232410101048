@@ -80,7 +80,7 @@ class pageController extends Controller
                 'password.required' => 'harap mengisi password'
             ]
         );
-        Session::put(['last Login' => now()]);
+        Session::put('last Login', now());
         return redirect()->route('dashboard', ['username' => $request->username])->with('success', 'Berhasil Login !');
     }
 
@@ -95,7 +95,7 @@ class pageController extends Controller
         if (!$request->username) {
             return redirect(route('login.index'));
         }
-        return view('profile', ['username' => $request->username, 'lastLogin' => Session::get('lastLogin'), 'page' => 'profile']);
+        return view('profile', ['username' => $request->username, 'lastLogin' => Session::get('last Login'), 'page' => 'profile']);
     }
 
     public function dashboardPage(Request $request)

@@ -44,7 +44,7 @@
                 </div>
                 <div class="lg:w-2/3 p-4 lg:p-6 bg-gray-50 flex flex-col justify-center w-full gap-10 items-center">
                     <h2 class="text-xl font-semibold text-gray-800 mb-4 text-center">Tambah Aktivitas</h2>
-                    <form action="{{ route('kelola.store') }}" method="POST"
+                    <form action="{{ route('kelola.store',['username' => $username]) }}" method="POST"
                         class="space-y-4 flex flex-col items-center w-full max-w-lg">
                         @csrf
                         <div class="w-full">
